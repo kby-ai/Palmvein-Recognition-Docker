@@ -14,11 +14,7 @@
 #### 📚 Product & Resources - [Here](https://github.com/kby-ai/Product)
 #### 🛟 Help Center - [Here](https://docs.kby-ai.com)
 #### 💼 KYC Verification Demo - [Here](https://github.com/kby-ai/KYC-Verification-Demo-Android)
-#### 🙋‍♀️ Docker Hub - [Here](https://hub.docker.com/r/kbyai/palmprint-recognition)
-```bash
-sudo docker pull kbyai/palmprint-recognition:latest
-sudo docker run -v ./license.txt:/root/kby-ai-palmprint/license.txt -p 8081:8080 -p 9001:9000 kbyai/palmprint-recognition:latest
-```
+
 
 # Palmvein-Recognition-Docker
 ## Overview
