@@ -91,7 +91,7 @@ This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which re
   - Update the `license.txt` file by overwriting the `license key` that you received from `KBY-AI` team.
   - Run the `Docker` container:
     ```bash
-    sudo docker run -v ./license.txt:/home/openvino/kby-ai-palmvein/license.txt -p 8081:8080 -p 9001:9000 kbyai/palmvein-recognition:latest
+    sudo docker run -v ./license.txt:/home/openvino/kby-ai-palmvein/license.txt -p 8081:8080 -p 9001:9000 kby-ai-palmvein:latest
     ```
     ![image](https://github.com/user-attachments/assets/008fcf4d-8cf6-4e16-890b-e69d36d3d324)
   - Here are the endpoints to test the `API` through `Postman`:
