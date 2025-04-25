@@ -38,9 +38,23 @@ It includes features that allow for testing `plamvein` recognition between two i
 
 > To get more products, please visit products [here](https://github.com/kby-ai):<br/>
 
+## Try the API
+### Online Demo
+  This `SDK` can be tested on online test demo page [here](https://web.kby-ai.com):
+  
+  ![image](https://github.com/user-attachments/assets/4e660694-f5bf-4f00-be2b-822c093e2d94)
+  
+### Postman
+  The `API` can be evaluated through `Postman` tool. Here are the endpoints for testing:
+  - Test with an image file: Send a `POST` request to `http://127.0.0.1:8081/palmvein`.
+  - Test with a `base64-encoded` image: Send a `POST` request to `http://127.0.0.1:8081/palmvein_base64`.
+    ![image](https://github.com/user-attachments/assets/dfaf0151-db84-4330-bffc-8c5a41d66fa3)
+    
 ## SDK License
 
 This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which requires a license per machine.
+- The code below shows how to use the license: https://github.com/kby-ai/Palmvein-Recognition-Docker/blob/c92c8d923c51591d869773f81a2af30dc309667e/app.py#L17-L29
+- To request the license, please provide us with the `machine code` obtained from the `getMachineCode` function.
 
 #### Please contact us:</br>
 🧙`Email:` contact@kby-ai.com</br>
