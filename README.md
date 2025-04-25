@@ -116,49 +116,37 @@ This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which re
 ## About SDK
 
 ### 1. Initializing the SDK
-
-- Import SDK python package
-  ```python
-  import handtool
-  ```
-- Create new object for using `SDK` 
-  ```python
-  config = handtool.EncoderConfig()
-  encoder = handtool.create_encoder(config)  
-  ```
 - Obtain the `machine code` to activate and request a license
   ```python
-  machineCode = encoder.getMachineCode()
+  machineCode = getMachineCode()
   print("\nmachineCode: ", machineCode.decode('utf-8'))
   ```
 - Activate the `SDK` using the license key
   ```python
-  ret = encoder.setActivation(license.encode('utf-8'))
+  ret = setActivation(license.encode('utf-8'))
   print("\nactivation: ", ret)
   ```  
-  Once `ret` value is zero, SDK can get work started
+  Once `ret` value is zero, `SDK` can get work started
 
 ### 2. APIs
-  - Hand Detection
-  
-    The `SDK` provides a single API for detecting hands, determining `hand landmark`.</br>
+  - `ROI` Extraction
+    The `SDK` provides a single API for detecting hands and extracting `ROI` from the whole hand image(`palmvein`).</br>
     The function can be used as follows:
     ```python
-    hand_type, x1, y1, x2, y2, detect_state = encoder.detect_using_bytes(img)
-    roi = mat_to_bytes(get_roi(img, hand_type, x1, y1, x2, y2))
+    roi, label = get_roi_image(cv2.flip(image, 1))
     ```
-    * `hand_type`: it indicates hand type value, `0` value: `left hand`, `1` value: `right hand`.
-    * `x1`, `y1`, `x2`, `y2`: hand landmark points to get `ROI` image.
+    * `image`: input image.
+    * `label`: `Left` hand or `Right` one.
     * `roi`: hand `ROI(Region Of Interest)` image to get palm feature.
   - Create Feature
-    `encode_using_bytes` function returns palmprint feature against `ROI` data.</br>
+    `getFeature` function returns palmvein feature against `ROI` data.</br>
     ```python    
-    palmprint = encoder.encode_using_bytes(roi)
+    cnt = getFeature(roi_byte, len(roi_byte), feature_array)
     ```
-    * `roi`: hand `ROI(Region Of Interest)` image to get palm feature.
-    * `palmprint`: palmprint feature calculated from hand `ROI` data.    
+    * `roi_byte`: roi image in byte format(image should be converted to byte format by function `mat_to_byets()`).
+    * `feature_array`: palmvein feature extracted from hand `ROI` data.    
   - Similiarity
-    The `compare_to` function takes two palmprint `feature`s as a parameter and returns `score` value to determine whether 2 input hands are from the same or different.
+    The `getScore()` function takes two palmvein `feature`s as a parameter and returns `score` value to determine whether 2 input hands are from the same or different.
     ```python
     one_palmprint_code = encoder.encode_using_bytes(roi1)
     another_palmprint_code = encoder.encode_using_bytes(roi2)
