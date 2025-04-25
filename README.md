@@ -146,14 +146,12 @@ This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which re
     * `roi_byte`: roi image in byte format(image should be converted to byte format by function `mat_to_byets()`).
     * `feature_array`: palmvein feature extracted from hand `ROI` data.    
   - Similiarity
-    The `getScore()` function takes two palmvein `feature`s as a parameter and returns `score` value to determine whether 2 input hands are from the same or different.
+    The `getScore()` function takes two palmvein `feature`s as arguments and returns `score` value to determine whether 2 input hands are from the same or different.
     ```python
-    one_palmprint_code = encoder.encode_using_bytes(roi1)
-    another_palmprint_code = encoder.encode_using_bytes(roi2)
-    score = one_palmprint_code.compare_to(another_palmprint_code)
+    score = getScore(feature_array1, cnt1, feature_array2, cnt2)
     ```
 
 ### 3. Threshold
-  The threshold is `0.15` as a default.
-  https://github.com/kby-ai/Palmprint-Recognition-Docker/blob/ddf1f039c55534d7189fda162b5c4df844131b72/app.py#L12-L13
+  The threshold is `0.65` as a default.
+  https://github.com/kby-ai/Palmvein-Recognition-Docker/blob/a3553eea9a2eda08b73ac66e08c2bd7b2225e866/app.py#L109-L110
 
