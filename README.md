@@ -63,3 +63,109 @@ This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which re
 🧙`Discord:` [KBY-AI](https://discord.gg/CgHtWQ3k9T)</br>
 🧙`Teams:` [KBY-AI](https://teams.live.com/l/invite/FBAYGB1-IlXkuQM3AY)</br>
  
+### 1. System Requirements
+  - `CPU`: 2 cores or more (Recommended: 2 cores)
+  - `RAM`: 4 GB or more (Recommended: 8 GB)
+  - `HDD`: 4 GB or more (Recommended: 8 GB)
+  - `OS`: `Ubuntu 20.04` or later
+  - Dependency: `ncnn` (Version: 2024.12.26)
+    
+### 2. Setup and Test
+  - Clone the project:
+    ```bash
+    git clone https://github.com/kby-ai/Palmvein-Recognition-Docker.git
+    ```
+    ```bash
+    cd Palmvein-Recognition-Docker
+    ```
+  - Build the `Docker` image:
+    ```bash
+    sudo docker build --pull --rm -f Dockerfile -t kby-ai-palmvein:latest .
+    ```
+  - Read `machine code`
+    ```
+    sudo docker run -e LICENSE="xxxxx" kby-ai-palmvein:latest
+    ```
+  - Send us `machine code` obtained.
+    ![image](https://github.com/user-attachments/assets/3c84f49a-1a8a-4b4e-832b-a4e23b46d357)
+  - Update the `license.txt` file by overwriting the `license key` that you received from `KBY-AI` team.
+  - Run the `Docker` container:
+    ```bash
+    sudo docker run -v ./license.txt:/home/openvino/kby-ai-palmvein/license.txt -p 8081:8080 -p 9001:9000 kbyai/palmvein-recognition:latest
+    ```
+    ![image](https://github.com/user-attachments/assets/008fcf4d-8cf6-4e16-890b-e69d36d3d324)
+  - Here are the endpoints to test the `API` through `Postman`:
+    Test with an image file: Send a `POST` request to `http://{xx.xx.xx.xx}:8081/palmvein`.</br>
+    Test with a `base64-encoded` image: Send a `POST` request to `http://{xx.xx.xx.xx}:8081/palmvein`.</br>
+
+### 3. Execute the Gradio demo
+  - Setup `Gradio`
+    Ensure that the necessary dependencies are installed. </br>
+    `Gradio` requires `Python 3.6` or above. </br>
+    Install `Gradio` using `pip` by running the following command:
+    ```bash
+    pip install gradio
+    ```
+  - Run the demo with the following command:
+    ```bash
+    cd gradio
+    python demo.py
+    ```
+  - `SDK` can be tested on the following URL: `http://127.0.0.1:9000`
+
+## About SDK
+
+### 1. Initializing the SDK
+
+- Import SDK python package
+  ```python
+  import handtool
+  ```
+- Create new object for using `SDK` 
+  ```python
+  config = handtool.EncoderConfig()
+  encoder = handtool.create_encoder(config)  
+  ```
+- Obtain the `machine code` to activate and request a license
+  ```python
+  machineCode = encoder.getMachineCode()
+  print("\nmachineCode: ", machineCode.decode('utf-8'))
+  ```
+- Activate the `SDK` using the license key
+  ```python
+  ret = encoder.setActivation(license.encode('utf-8'))
+  print("\nactivation: ", ret)
+  ```  
+  Once `ret` value is zero, SDK can get work started
+
+### 2. APIs
+  - Hand Detection
+  
+    The `SDK` provides a single API for detecting hands, determining `hand landmark`.</br>
+    The function can be used as follows:
+    ```python
+    hand_type, x1, y1, x2, y2, detect_state = encoder.detect_using_bytes(img)
+    roi = mat_to_bytes(get_roi(img, hand_type, x1, y1, x2, y2))
+    ```
+    * `hand_type`: it indicates hand type value, `0` value: `left hand`, `1` value: `right hand`.
+    * `x1`, `y1`, `x2`, `y2`: hand landmark points to get `ROI` image.
+    * `roi`: hand `ROI(Region Of Interest)` image to get palm feature.
+  - Create Feature
+    `encode_using_bytes` function returns palmprint feature against `ROI` data.</br>
+    ```python    
+    palmprint = encoder.encode_using_bytes(roi)
+    ```
+    * `roi`: hand `ROI(Region Of Interest)` image to get palm feature.
+    * `palmprint`: palmprint feature calculated from hand `ROI` data.    
+  - Similiarity
+    The `compare_to` function takes two palmprint `feature`s as a parameter and returns `score` value to determine whether 2 input hands are from the same or different.
+    ```python
+    one_palmprint_code = encoder.encode_using_bytes(roi1)
+    another_palmprint_code = encoder.encode_using_bytes(roi2)
+    score = one_palmprint_code.compare_to(another_palmprint_code)
+    ```
+
+### 3. Threshold
+  The threshold is `0.15` as a default.
+  https://github.com/kby-ai/Palmprint-Recognition-Docker/blob/ddf1f039c55534d7189fda162b5c4df844131b72/app.py#L12-L13
+
