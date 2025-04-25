@@ -14,7 +14,11 @@
 #### 📚 Product & Resources - [Here](https://github.com/kby-ai/Product)
 #### 🛟 Help Center - [Here](https://docs.kby-ai.com)
 #### 💼 KYC Verification Demo - [Here](https://github.com/kby-ai/KYC-Verification-Demo-Android)
-
+#### 🙋‍♀️ Docker Hub - [Here](https://hub.docker.com/r/kbyai/palmvein-recognition)
+```bash
+sudo docker pull kbyai/palmvein-recognition:latest
+sudo docker run -v ./license.txt:/home/openvino/kby-ai-palmvein/license.txt -p 8081:8080 -p 9001:9000 kbyai/palmvein-recognition:latest
+```
 
 # Palmvein-Recognition-Docker
 ## Overview
@@ -31,7 +35,6 @@ It includes features that allow for testing `plamvein` recognition between two i
   | 2        | [Palmprint Recognition - Docker](https://hub.docker.com/r/kbyai/palmprint-recognition)    | Palmprint Comparison Docker Image | Available |
   | ➡️        | <b>[Palmvein Recognition - Linux](https://github.com/kby-ai/Palmvein-Recognition-Docker)</b>    | <b>Palmvein Comparison Linux SDK</b> | <b>Available</b> |
   | 4        | [Palmprint Recognition - Android](https://github.com/kby-ai/Palmprint-Recognition-Android)    | Palmprint Comparison Android SDK | Available |
-  | 5        | Palmprint Recognition - iOS    | Palmprint Comparison iOS SDK | Developing |
 
 > To get more products, please visit products [here](https://github.com/kby-ai):<br/>
 
