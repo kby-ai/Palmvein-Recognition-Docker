@@ -41,10 +41,10 @@ It includes features that allow for testing `plamvein` recognition between two i
 
 ## Try the API
 ### Online Demo
-  This `SDK` can be tested on online test demo page [here](https://web.kby-ai.com):
+  This `SDK` can be tested on online test demo page [here](https://huggingface.co/spaces/kby-ai/PalmVeinRecognition):
   
-  ![image](https://github.com/user-attachments/assets/4e660694-f5bf-4f00-be2b-822c093e2d94)
-  
+  ![image](https://github.com/user-attachments/assets/78916d28-87ac-4313-8128-b25825af42d8)
+
 ### Postman
   The `API` can be evaluated through `Postman` tool. Here are the endpoints for testing:
   - Test with an image file: Send a `POST` request to `http://127.0.0.1:8081/palmvein`.
