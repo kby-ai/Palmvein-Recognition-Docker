@@ -15,10 +15,6 @@
 #### 🛟 Help Center - [Here](https://docs.kby-ai.com)
 #### 💼 KYC Verification Demo - [Here](https://github.com/kby-ai/KYC-Verification-Demo-Android)
 #### 🙋‍♀️ Docker Hub - [Here](https://hub.docker.com/r/kbyai/palmvein-recognition)
-```bash
-sudo docker pull kbyai/palmvein-recognition:latest
-sudo docker run -v ./license.txt:/home/openvino/kby-ai-palmvein/license.txt -p 8081:8080 -p 9001:9000 kbyai/palmvein-recognition:latest
-```
 
 # Palmvein-Recognition-Docker
 ## Overview
@@ -60,7 +56,7 @@ This project demonstrates `KBY-AI`'s `Palmvein Recognition Server SDK`, which re
 #### Please contact us:</br>
 🧙`Email:` contact@kby-ai.com</br>
 🧙`Telegram:` [@kbyaisupport](https://t.me/kbyaisupport)</br>
-🧙`WhatsApp:` [+19092802609](https://wa.me/+19092802609)</br>
+🧙`WhatsApp:` [+13348402323](https://wa.me/+13348402323)</br>
 🧙`Discord:` [KBY-AI](https://discord.gg/6wm383re2s)</br>
 🧙`Teams:` [KBY-AI](https://teams.live.com/l/invite/FBAYGB1-IlXkuQM3AY)</br>
  
